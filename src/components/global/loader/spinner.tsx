@@ -15,7 +15,7 @@ export const Spinner = ({ color }: SpinnerProps) => {
           r="20"
           fill="none"
           stroke="currentColor"
-          stroke-width="5"
+          strokeWidth="5"
         ></circle>
       </svg>
     </div>

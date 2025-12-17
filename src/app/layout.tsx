@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "sonner";
+import ReactQueryProvider from "@/providers/react-query-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,9 @@ export default function RootLayout({
             defaultTheme="dark"
             disableTransitionOnChange
           >
+            <ReactQueryProvider>
             {children}
+            </ReactQueryProvider>
             <Toaster position="top-right" />
           </ThemeProvider>
         </body>
