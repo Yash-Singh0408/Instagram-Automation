@@ -18,17 +18,17 @@ export const sendDM = async(
     return await axios.post(`${process.env.INSTAGRAM_BASE_URL}/v21.0/${userId}/messages`,
         {
             recipient:{
-                id:{
-                    receiverId
-                },
-                message:{
-                    text:prompt
-                },   
+                id: receiverId
             },
+            message:{
+                text: prompt
+            }
+        },
+        {
             headers:{
                 Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
-            },
+            }
         }
     )
 }

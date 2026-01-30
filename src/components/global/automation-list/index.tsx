@@ -19,6 +19,13 @@ const AutomationList = (props: Props) => {
  
 
   const { pathname } = usePaths();
+  const optimisticUiData = useMemo(()=>{
+  if((latestVariable && latestVariable?.variables && data?.data)){
+    const test = [latestVariable.variables , ...data.data]
+    return {data: test}
+  }
+  return data || {data: []}
+},[latestVariable , data])
 
   if (
     data?.status !== 200 ||
@@ -33,13 +40,7 @@ const AutomationList = (props: Props) => {
     );
   }
 
-const optimisticUiData = useMemo(()=>{
-  if(latestVariable?.variables){
-    const test = [latestVariable.variables , ...data.data]
-    return {data: test}
-  }
-  return data
-},[latestVariable , data])
+
 
   return (
     <div className="flex flex-col gap-y-3">
@@ -64,7 +65,10 @@ const optimisticUiData = useMemo(()=>{
 
             {automation.keywords.length > 0 ? (
               <div className="flex gap-x-2 flex-wrap mt-3">
-                <div
+
+                { //@ts-ignore
+                automation.keywords.map((keyword , key)=>
+               ( <div key={keyword.id}
                   className={cn(
                     "rounded-full px-4 py-1 capitalize",
                     (0 + 1) % 1 == 0 &&
@@ -77,8 +81,10 @@ const optimisticUiData = useMemo(()=>{
                       "bg-keyword-red/15 border-2 border-keyword-red"
                   )}
                 >
-                  Get Started
-                </div>
+                  {keyword.word}
+                </div>)
+              )}
+                
               </div>
             ) : (
               <div className="rounded-full border-2 mt-3 border-dashed border-white/60 px-3 py-1">

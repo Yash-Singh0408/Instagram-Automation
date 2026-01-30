@@ -114,6 +114,33 @@ export const getKeywordPost = async (postId:string, automationId:string) => {
     })
 }
 
+// Find an automation for a given Instagram integration id that listens for DMs
+export const getAutomationForDm = async (instagramId: string) => {
+    const integration = await client.integration.findFirst({
+        where: { instagramId },
+        select: { userId: true },
+    });
+
+    if (!integration?.userId) return null;
+
+    return await client.automation.findFirst({
+        where: {
+            userId: integration.userId,
+            active: true,
+            trigger: { some: { type: 'DM' } },
+        },
+        include: {
+            listener: true,
+            User: {
+                select: {
+                    subscription: true,
+                    integrations: true,
+                },
+            },
+        },
+    });
+};
+
 // Function to get chat history for the user
 export const getChatHistory = async (sender: string, reciever: string) => {
   const dms = await client.dms.findMany({
