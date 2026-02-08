@@ -416,7 +416,7 @@ export async function POST(req: NextRequest) {
                       console.warn('⚠️ Gemini quota exceeded for contextual reply:', err?.message, 'retryAfterSeconds:', err?.retryAfterSeconds);
                       return NextResponse.json({ message: `SMARTAI temporarily unavailable. Please retry in ${err.retryAfterSeconds || 'a few seconds'}` }, { status: 200 });
                     }
-                    console.error("❌ SMARTAI contextual error:", err.message);
+                    // console.error("❌ SMARTAI contextual error:", err.message);
                     return NextResponse.json({ message: "SMARTAI failed" }, { status: 200 });
                   }
               }

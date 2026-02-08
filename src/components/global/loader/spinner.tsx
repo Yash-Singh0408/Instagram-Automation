@@ -10,8 +10,8 @@ export const Spinner = ({ color }: SpinnerProps) => {
     <div role="status" className="animate-spin h-4 w-4">
       <svg className="h-full w-full" viewBox="25 25 50 50">
         <circle
-          cx="25"
-          cy="25"
+          cx="50"
+          cy="50"
           r="20"
           fill="none"
           stroke="currentColor"

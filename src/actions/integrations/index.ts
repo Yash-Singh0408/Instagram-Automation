@@ -18,7 +18,10 @@ export const onIntegrate = async (code: string) => {
     const user = await onCurrentUser()
     try {
         const integration = await getIntegration(user.id)
+        console.log("Integration found with current code: ", code)
+        console.log(integration)
         if(integration && integration.integrations.length === 0) {
+            console.log("No existing integration found, proceeding with integration." + code + integration.integrations.length)
             const token = await generateTokens(code)
             console.log(token)
             if(token){

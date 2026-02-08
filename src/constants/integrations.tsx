@@ -4,7 +4,7 @@ type Props = {
     title : string,
     icon: React.ReactNode,
     description : string,
-    strategy: 'Instagram' | 'CRM'
+    strategy: 'INSTAGRAM' | 'CRM'
 }
 
 export const INTEGRATIONS_CARDS : Props[] = [
@@ -12,7 +12,7 @@ export const INTEGRATIONS_CARDS : Props[] = [
         title : "Connect Instagram",
         description : "Automate your Instagram interactions seamlessly.",
         icon:< FaInstagram size={30} color="purple"/>,
-        strategy: 'Instagram'
+        strategy: 'INSTAGRAM'
     },
     {
         title : "Connect Salesforce",

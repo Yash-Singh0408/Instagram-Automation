@@ -20,7 +20,7 @@ const plans = [
     priceYearly: 0,
     features: [
       "Basic automation",
-      "Comment reply templates",
+      "Comment reply",
       "Community support",
     ],
     extras: ["Community support", "Single user"],
@@ -29,14 +29,13 @@ const plans = [
   {
     name: "Smart AI",
     description: "For creators and teams",
-    priceMonthly: 29,
+    priceMonthly: 59,
     // yearly: 2 months free -> 10 months pricing
-    priceYearly: 29 * 10,
+    priceYearly: 59 * 10,
     features: [
       "AI response generation",
       "Advanced analytics",
       "Priority support",
-      "Custom branding",
     ],
     extras: ["Team seats", "Onboarding session", "99.9% uptime SLA"],
     cta: "Upgrade",
